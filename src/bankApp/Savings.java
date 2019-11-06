@@ -3,8 +3,8 @@ package bankApp;
 public class Savings extends Account {
 
     //List proporties specific to the savings account
-    int safteyDepositBoxID;
-    int safetyDepositBoxKey;
+    private int safetyDepositBoxID;
+    private int safetyDepositBoxKey;
 
     //Constructor to init settings for the savings proporties
     public Savings(String name, String sSN, double initDeposit){
@@ -14,8 +14,14 @@ public class Savings extends Account {
         setSafetyDepositBox();
     }
 
+    @Override
+    public void setRate(){
+        System.out.println("Implement rate for Savings account...");
+        rate = getBaseRate() - 0.25;
+    }
+
     private void setSafetyDepositBox(){
-        safteyDepositBoxID = (int) (Math.random() * Math.pow(10, 3));
+        safetyDepositBoxID = (int) (Math.random() * Math.pow(10, 3));
         safetyDepositBoxKey = (int) (Math.random() * Math.pow(10, 4));
     }
 
@@ -23,7 +29,7 @@ public class Savings extends Account {
 
     public void showInfo(){
         super.showInfo();
-        System.out.println("Your saving account features: " + "\nSafety Deposit Box ID: " + safteyDepositBoxID +
+        System.out.println("Your saving account features: " + "\nSafety Deposit Box ID: " + safetyDepositBoxID +
                 "\nSafety Deposit Box Key: " + safetyDepositBoxKey);
 
     }
